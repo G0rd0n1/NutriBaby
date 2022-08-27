@@ -16,12 +16,43 @@ const Topics = (): JSX.Element => {
         >
           I want to learn about...
         </Text>
-        <View style={styles.buttonContainer}>
-          <Link to="/welcome">
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Get started</Text>
-            </View>
-          </Link>
+        <View style={styles.topicsContainer}>
+          <View style={[styles.topic, { backgroundColor: "#2ecc71" }]}>
+            <Text
+              allowFontScaling={false}
+              selectable={false}
+              style={styles.topicText}
+            >
+              Diabetes II
+            </Text>
+          </View>
+          <View style={[styles.topic, { backgroundColor: "#FFC312" }]}>
+            <Text
+              allowFontScaling={false}
+              selectable={false}
+              style={styles.topicText}
+            >
+              Asberger's
+            </Text>
+          </View>
+          <View style={[styles.topic, { backgroundColor: "#FDA7DF" }]}>
+            <Text
+              allowFontScaling={false}
+              selectable={false}
+              style={styles.topicText}
+            >
+              Hypertension
+            </Text>
+          </View>
+          <View style={[styles.topic, { backgroundColor: "#74b9ff" }]}>
+            <Text
+              allowFontScaling={false}
+              selectable={false}
+              style={styles.topicText}
+            >
+              Stress
+            </Text>
+          </View>
         </View>
       </View>
     </View>
