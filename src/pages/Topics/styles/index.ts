@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     hero: {
         alignSelf: "center",
         flexDirection: "column",
-        marginTop: heightPercentageToDP("20")
+        marginTop: heightPercentageToDP("10")
     },
     description: {
         textAlign: "center",

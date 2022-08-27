@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import { Link } from "react-router-dom";
 import { styles } from "./styles";
 
-const Landing = (): JSX.Element => {
+const Topics = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <View style={styles.hero}>
@@ -14,7 +14,7 @@ const Landing = (): JSX.Element => {
           selectable={false}
           style={styles.description}
         >
-          The free, fun, and effective way to learn about food and nutrition!
+          I want to learn about...
         </Text>
         <View style={styles.buttonContainer}>
           <Link to="/welcome">
@@ -27,4 +27,4 @@ const Landing = (): JSX.Element => {
     </View>
   );
 };
-export default Landing;
+export default Topics;
