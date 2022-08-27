@@ -29,6 +29,10 @@ export const styles = StyleSheet.create({
     marginHorizontal: widthPercentageToDP("15"),
     textAlign: "center",
   },
+  loading: {
+    marginHorizontal: widthPercentageToDP("15"),
+    marginVertical: widthPercentageToDP("5"),
+  },
   topicsContainer: {
     alignSelf: "center",
     flexDirection: "row",

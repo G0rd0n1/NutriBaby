@@ -1,18 +1,53 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useCookies } from "react-cookie";
-import { Link } from "react-router-dom";
 import { styles } from "./styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Topic } from "../../components";
 
 const Topics = (): JSX.Element => {
-  const [, setCookie] = useCookies();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [cookies, setCookie] = useCookies();
 
   useEffect((): void => {
+    if (cookies.MODE !== null && cookies.MODE !== undefined) {
+      window.location.replace("/play");
+    }
     setCookie("OnBoarding", true, {
       path: "/",
       maxAge: 2628000, // lasts 1 month
     });
-  }, []);
+    // eslint-disable-next-line
+  }, [cookies.MODE]);
+
+  const setGameMode = (gameMode: string): void => {
+    setCookie("MODE", gameMode, {
+      path: "/",
+      maxAge: 2628000,
+    });
+    setLoading(true);
+    setTimeout(() => {
+      window.location.replace("/play");
+    }, 500);
+  };
+
+  const renderTopics = (): JSX.Element => {
+    return (
+      <View style={styles.topicsContainer}>
+        <TouchableOpacity onPress={() => setGameMode("diabetes")}>
+          <Topic colour="#2ecc71" text="Diabetes II" />
+        </TouchableOpacity>
+        <Topic colour="#FFC312" text="Asberger's" />
+        <Topic colour="#FDA7DF" text="Hypertension" />
+        <Topic colour="#74b9ff" text="Stress" />
+      </View>
+    );
+  };
+
+  const renderLoading = (): JSX.Element => {
+    return (
+      <ActivityIndicator size="large" color="#000" style={styles.loading} />
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -27,46 +62,7 @@ const Topics = (): JSX.Element => {
         >
           I want to learn about...
         </Text>
-        <View style={styles.topicsContainer}>
-          <Link to="/play">
-            <View style={[styles.topic, { backgroundColor: "#2ecc71" }]}>
-              <Text
-                allowFontScaling={false}
-                selectable={false}
-                style={styles.topicText}
-              >
-                Diabetes II
-              </Text>
-            </View>
-          </Link>
-          <View style={[styles.topic, { backgroundColor: "#FFC312" }]}>
-            <Text
-              allowFontScaling={false}
-              selectable={false}
-              style={styles.topicText}
-            >
-              Asberger's
-            </Text>
-          </View>
-          <View style={[styles.topic, { backgroundColor: "#FDA7DF" }]}>
-            <Text
-              allowFontScaling={false}
-              selectable={false}
-              style={styles.topicText}
-            >
-              Hypertension
-            </Text>
-          </View>
-          <View style={[styles.topic, { backgroundColor: "#74b9ff" }]}>
-            <Text
-              allowFontScaling={false}
-              selectable={false}
-              style={styles.topicText}
-            >
-              Stress
-            </Text>
-          </View>
-        </View>
+        {loading ? renderLoading() : renderTopics()}
       </View>
     </View>
   );

@@ -5,13 +5,16 @@ import { Link } from "react-router-dom";
 import { styles } from "./styles";
 
 const Landing = (): JSX.Element => {
-  const [cookies] = useCookies(["OnBoarding"]);
+  const [cookies] = useCookies(["OnBoarding", "MODE"]);
 
   useEffect((): void => {
+    if (cookies.MODE !== null && cookies.MODE !== undefined) {
+      window.location.replace("/play");
+    }
     if (cookies.OnBoarding === "true") {
       window.location.replace("/welcome");
     }
-  }, []);
+  }, [cookies.MODE, cookies.OnBoarding]);
 
   return (
     <View style={styles.container}>

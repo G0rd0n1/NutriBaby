@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { LandingPage, TopicsPage } from "../pages";
+import { LandingPage, PlayPage, TopicsPage } from "../pages";
 
 const Navigator = (): JSX.Element => {
   return (
@@ -8,7 +8,7 @@ const Navigator = (): JSX.Element => {
         <Route element={<LandingPage />} path="/learn" />
         <Route element={<TopicsPage />} path="/welcome" />
 
-        <Route element={<TopicsPage />} path="/welcome" />
+        <Route element={<PlayPage />} path="/play" />
       </Routes>
     </Router>
   );
