@@ -7,6 +7,8 @@ const Navigator = (): JSX.Element => {
       <Routes>
         <Route element={<LandingPage />} path="/learn" />
         <Route element={<TopicsPage />} path="/welcome" />
+
+        <Route element={<TopicsPage />} path="/welcome" />
       </Routes>
     </Router>
   );

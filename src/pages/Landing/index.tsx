@@ -1,8 +1,18 @@
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { View, Text } from "react-native";
 import { Link } from "react-router-dom";
 import { styles } from "./styles";
 
 const Landing = (): JSX.Element => {
+  const [cookies] = useCookies(["OnBoarding"]);
+
+  useEffect((): void => {
+    if (cookies.OnBoarding === "true") {
+      window.location.replace("/welcome");
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.hero}>

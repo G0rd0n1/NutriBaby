@@ -1,8 +1,19 @@
 import { View, Text } from "react-native";
+import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import { styles } from "./styles";
+import { useEffect } from "react";
 
 const Topics = (): JSX.Element => {
+  const [, setCookie] = useCookies();
+
+  useEffect((): void => {
+    setCookie("OnBoarding", true, {
+      path: "/",
+      maxAge: 2628000, // lasts 1 month
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.hero}>
@@ -17,15 +28,17 @@ const Topics = (): JSX.Element => {
           I want to learn about...
         </Text>
         <View style={styles.topicsContainer}>
-          <View style={[styles.topic, { backgroundColor: "#2ecc71" }]}>
-            <Text
-              allowFontScaling={false}
-              selectable={false}
-              style={styles.topicText}
-            >
-              Diabetes II
-            </Text>
-          </View>
+          <Link to="/play">
+            <View style={[styles.topic, { backgroundColor: "#2ecc71" }]}>
+              <Text
+                allowFontScaling={false}
+                selectable={false}
+                style={styles.topicText}
+              >
+                Diabetes II
+              </Text>
+            </View>
+          </Link>
           <View style={[styles.topic, { backgroundColor: "#FFC312" }]}>
             <Text
               allowFontScaling={false}
