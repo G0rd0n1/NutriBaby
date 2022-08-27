@@ -1,20 +1,45 @@
-import { useEffect } from "react";
-import { useCookies } from "react-cookie";
 import { View, Text } from "react-native";
 import { styles } from "./styles";
+import { useEffect } from "react";
+import { CompletionIndicator, Topic } from "../../components";
+import { useCookies } from "react-cookie";
 
 const Play = (): JSX.Element => {
-  const [cookie] = useCookies(["MODE"]);
+  const [cookies] = useCookies(["MODE"]);
 
   useEffect((): void => {
-    if (cookie.MODE === null || cookie.MODE === undefined) {
-      window.location.replace("/welcome");
+    if (cookies.MODE === null || cookies.MODE === undefined) {
+      window.location.replace("/");
     }
-  }, [cookie.MODE]);
+  }, []);
+
+  const renderTopics = (): JSX.Element => {
+    return (
+      <View style={styles.topicsContainer}>
+        <Topic colour="#fff" text="Crying" />
+        <Topic colour="#fff" text="Smoking" />
+        <Topic colour="#fff" text="Dancing" />
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
-      <Text>This is the Play page</Text>
+      <View style={styles.hero}>
+        <CompletionIndicator colour="#27ae60" sheen="#2ecc71" progress={80} />
+
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={styles.description}
+        >
+          ... increases risk of diabetes.
+        </Text>
+        {renderTopics()}
+        <View style={styles.check}>
+          <Text style={styles.checkText}>Check</Text>
+        </View>
+      </View>
     </View>
   );
 };
