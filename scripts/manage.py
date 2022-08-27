@@ -20,15 +20,24 @@ class Manager:
         with open(f"{new_app_directory}/styles/index.ts", "w") as init:
             code: str = """import { StyleSheet } from \"react-native\";
 
-export const styles = StyleSheet.create({});
+export const styles = StyleSheet.create({
+    container: {},
+});
 """
             init.write(code)
 
     def _create_tsx_files(self, page_name, new_app_directory: Path) -> None:
         with open(f"{new_app_directory}/index.tsx", "w") as init:
-            code: str = """function tempName(): JSX.Element {
-    return <h1>tempName</h1>;
-};
+            code: str = """import { View, Text } from "react-native";
+import { styles } from "./styles";
+
+const tempName = (): JSX.Element => {
+  return (
+    <View style={styles.container}>
+      <Text>This is the tempName page</Text>
+    </View>
+  );
+}
 export default tempName;
 """
             init.write(code.replace("tempName", page_name))

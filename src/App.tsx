@@ -1,6 +1,9 @@
-import {Text} from "react-native"
+import { LandingPage } from "./pages";
+
 function App(): JSX.Element {
-  return <Text>JEKL</Text>;
+  return (
+    <LandingPage />
+  );
 }
 
 export default App;
