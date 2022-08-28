@@ -1,20 +1,19 @@
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { useEffect, useState } from "react";
 import { CompletionIndicator, Topic } from "../../components";
 import { useCookies } from "react-cookie";
 
-const Play = (): JSX.Element => {
+const Question2 = (): JSX.Element => {
   const [cookies] = useCookies(["MODE"]);
   const [showResult, setShowResult] = useState<any>(null);
   const [answer, setAnswer] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect((): void => {
     if (cookies.MODE === null || cookies.MODE === undefined) {
       window.location.replace("/");
     }
-  }, []);
+  }, [cookies.MODE]);
 
   const renderQuestion1 = (): JSX.Element => {
     return (
@@ -24,84 +23,38 @@ const Play = (): JSX.Element => {
           selectable={false}
           style={styles.description}
         >
-          ... increases risk of diabetes.
+          Which type of diabetes requires insuline intake?
         </Text>
         <View style={styles.topicsContainer}>
           <TouchableOpacity
-            onPress={() => setAnswer("crying")}
+            onPress={() => setAnswer("type 2")}
             style={
-              answer === "crying"
+              answer === "type 2"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
           >
-            <Topic colour="#fff" text="Crying" />
+            <Topic colour="#fff" text="type 2" />
           </TouchableOpacity>
           <TouchableOpacity
             style={
-              answer === "smoking"
+              answer === "type 1"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
-            onPress={() => setAnswer("smoking")}
+            onPress={() => setAnswer("type 1")}
           >
-            <Topic colour="#fff" text="Smoking" />
+            <Topic colour="#fff" text="type 1" />
           </TouchableOpacity>
           <TouchableOpacity
             style={
-              answer === "dancing"
+              answer === "both"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
-            onPress={() => setAnswer("dancing")}
+            onPress={() => setAnswer("both")}
           >
-            <Topic colour="#fff" text="Dancing" />
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  };
-
-  const renderQuestion2 = (): JSX.Element => {
-    return (
-      <View>
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={styles.description}
-        >
-          What are the differences between type 1 and type 2 diabetes?
-        </Text>
-        <View style={styles.topicsContainer}>
-          <TouchableOpacity
-            onPress={() => setAnswer("crying")}
-            style={
-              answer === "crying"
-                ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
-                : null
-            }
-          >
-            <Topic colour="#fff" text="Crying" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={
-              answer === "smoking"
-                ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
-                : null
-            }
-            onPress={() => setAnswer("smoking")}
-          >
-            <Topic colour="#fff" text="Smoking" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={
-              answer === "dancing"
-                ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
-                : null
-            }
-            onPress={() => setAnswer("dancing")}
-          >
-            <Topic colour="#fff" text="Dancing" />
+            <Topic colour="#fff" text="both" />
           </TouchableOpacity>
         </View>
       </View>
@@ -135,6 +88,8 @@ const Play = (): JSX.Element => {
     );
   };
 
+
+
   const renderIncorrect = (): JSX.Element => {
     return (
       <View style={styles.containerIncorrect}>
@@ -143,7 +98,7 @@ const Play = (): JSX.Element => {
             Correct answer
           </Text>
           <Text style={styles.answerText}>
-            Smoking increases the risk of type 2 diabetes
+            type 1 increases the risk of type 2 diabetes
           </Text>
           <Text style={styles.answerText}>
             people who smoke cigarettes are 30%-40% more likely to develop type
@@ -168,7 +123,7 @@ const Play = (): JSX.Element => {
             Great job!
           </Text>
           <Text style={styles.answerText}>
-            Smoking does, in fact, increase the risk of type 2 diabetes
+            type 1 does, in fact, increase the risk of type 2 diabetes
           </Text>
           <Text style={styles.answerText}>
             According to the CDC, people who smoke cigarettes are 30%-40% more
@@ -186,7 +141,7 @@ const Play = (): JSX.Element => {
           </Text>
         </View>
 
-        <TouchableOpacity onPress={setGameMode}>
+        <TouchableOpacity>
           <View style={styles.correctBtn}>
             <Text style={styles.correctText}>Continue</Text>
           </View>
@@ -198,7 +153,7 @@ const Play = (): JSX.Element => {
   const renderResponse = (): JSX.Element => {
     let isCorrect: boolean;
 
-    if (answer !== "smoking") isCorrect = false;
+    if (answer !== "type 1") isCorrect = false;
     else isCorrect = true;
 
     if (isCorrect) return renderCorrect();
@@ -210,35 +165,14 @@ const Play = (): JSX.Element => {
     else return renderInputs();
   };
 
-  const renderLoading = (): JSX.Element => {
-    return (
-      <ActivityIndicator size="large" color="#000" style={styles.loading} />
-    );
-  };
-
-  const setGameMode = (): void => {
-    setLoading(true);
-    setTimeout(() => {
-      window.location.replace("/play/question/2");
-    }, 500);
-  };
-
-  const renderContent = (): JSX.Element => {
-    return (
-      <View>
-        <CompletionIndicator colour="#27ae60" sheen="#2ecc71" progress={0} />
-        {renderQuestion1()}
-        {renderContainer()}
-      </View>
-    );
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.hero}>
-        {loading ? renderLoading() : renderContent()}
+        <CompletionIndicator colour="#27ae60" sheen="#2ecc71" progress={80} />
+        {renderQuestion1()}
+        {renderContainer()}
       </View>
     </View>
   );
 };
-export default Play;
+export default Question2;

@@ -8,10 +8,6 @@ export const styles = StyleSheet.create({
   container: {
     marginVertical: heightPercentageToDP("2"),
   },
-  loading: {
-    marginHorizontal: widthPercentageToDP("15"),
-    marginVertical: widthPercentageToDP("5"),
-  },
   hero: {
     alignSelf: "center",
     flexDirection: "column",
