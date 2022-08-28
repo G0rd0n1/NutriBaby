@@ -91,11 +91,12 @@ function checkForMatch2(selected, dropTarget) {
 }
 
 function playAgain() {
-  matchingCounter = 0;
-  endMessage.style.display = 'none';
-  draggableListItems.forEach(item => {
-    document.getElementById(item.id).style.display = 'block';
-  })
+  // matchingCounter = 0;
+  // endMessage.style.display = 'none';
+  // draggableListItems.forEach(item => {
+  //   document.getElementById(item.id).style.display = 'block';
+  // })
+  window.location.href = "http://localhost:3000/"
 }
 
 function addEventListeners() {
