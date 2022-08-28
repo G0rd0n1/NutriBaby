@@ -16,7 +16,7 @@ const Play = (): JSX.Element => {
     }
   }, [cookies.MODE]);
 
-  const renderQuestion1 = (): JSX.Element => {
+  const rendern1 = (): JSX.Element => {
     return (
       <View>
         <Text
@@ -24,38 +24,38 @@ const Play = (): JSX.Element => {
           selectable={false}
           style={styles.description}
         >
-          ... increases risk of diabetes.
+            What is also known as ascorbic acid?
         </Text>
         <View style={styles.topicsContainer}>
           <TouchableOpacity
-            onPress={() => setAnswer("crying")}
+            onPress={() => setAnswer("Vitamin B+")}
             style={
-              answer === "crying"
+              answer === "Vitamin B+"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
           >
-            <Topic colour="#fff" text="Crying" />
+            <Topic colour="#fff" text="Vitamin B+" />
           </TouchableOpacity>
           <TouchableOpacity
             style={
-              answer === "smoking"
+              answer === "Vitamin C"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
-            onPress={() => setAnswer("smoking")}
+            onPress={() => setAnswer("Vitamin C")}
           >
-            <Topic colour="#fff" text="Smoking" />
+            <Topic colour="#fff" text="Vitamin C" />
           </TouchableOpacity>
           <TouchableOpacity
             style={
-              answer === "dancing"
+              answer === "Vitamin A"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
-            onPress={() => setAnswer("dancing")}
+            onPress={() => setAnswer("Vitamin A")}
           >
-            <Topic colour="#fff" text="Dancing" />
+            <Topic colour="#fff" text="Vitamin A" />
           </TouchableOpacity>
         </View>
       </View>
@@ -97,15 +97,12 @@ const Play = (): JSX.Element => {
             Correct answer
           </Text>
           <Text style={styles.answerText}>
-            Smoking increases the risk of type 2 diabetes
+            Vitamin C increases the risk of type 2 diabetes
           </Text>
-          <Text style={styles.answerText}>
-            people who smoke cigarettes are 30%-40% more likely to develop type
-            2 diabetes than people who don't smoke
-          </Text>
+         
         </View>
 
-        <TouchableOpacity onPress={() => alert("Next question")}>
+        <TouchableOpacity onPress={() => alert("Next n")}>
           <View style={styles.incorrectBtn}>
             <Text style={styles.incorrectText}>Continue</Text>
           </View>
@@ -122,16 +119,13 @@ const Play = (): JSX.Element => {
             Great job!
           </Text>
           <Text style={styles.answerText}>
-            Smoking does, in fact, increase the risk of type 2 diabetes
+          Vitamin C, also known as ascorbic acid, is necessary for the growth, development and repair of all body tissues
           </Text>
-          <Text style={styles.answerText}>
-            According to the CDC, people who smoke cigarettes are 30%-40% more
-            likely to develop type 2 diabetes than people who don't smoke
-          </Text>
+          
           <Text style={styles.answerText}>
             Read more{" "}
             <a
-              href="https://www.cdc.gov/tobacco/campaign/tips/diseases/diabetes.html"
+              href="https://www.webmd.com/diet/features/the-benefits-of-vitamin-c#:~:text=Vitamin%20C%2C%20also%20known%20as,cartilage%2C%20bones%2C%20and%20teeth."
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -152,7 +146,7 @@ const Play = (): JSX.Element => {
   const renderResponse = (): JSX.Element => {
     let isCorrect: boolean;
 
-    if (answer !== "smoking") isCorrect = false;
+    if (answer !== "Vitamin C") isCorrect = false;
     else isCorrect = true;
 
     if (isCorrect) return renderCorrect();
@@ -181,7 +175,7 @@ const Play = (): JSX.Element => {
     return (
       <View>
         <CompletionIndicator colour="#27ae60" sheen="#2ecc71" progress={0} />
-        {renderQuestion1()}
+        {rendern1()}
         {renderContainer()}
       </View>
     );

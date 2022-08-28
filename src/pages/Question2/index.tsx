@@ -23,38 +23,39 @@ const Question2 = (): JSX.Element => {
           selectable={false}
           style={styles.description}
         >
-          Which type of diabetes requires insuline intake?
+          Which fats are considered as unhealthy?
+          
         </Text>
         <View style={styles.topicsContainer}>
           <TouchableOpacity
-            onPress={() => setAnswer("type 2")}
+            onPress={() => setAnswer(" monounsaturated fats")}
             style={
-              answer === "type 2"
+              answer === " monounsaturated fats"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
           >
-            <Topic colour="#fff" text="type 2" />
+            <Topic colour="#fff" text=" monounsaturated fats" />
           </TouchableOpacity>
           <TouchableOpacity
             style={
-              answer === "type 1"
+              answer === " saturated fats"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
-            onPress={() => setAnswer("type 1")}
+            onPress={() => setAnswer(" saturated fats")}
           >
-            <Topic colour="#fff" text="type 1" />
+            <Topic colour="#fff" text=" saturated fats" />
           </TouchableOpacity>
           <TouchableOpacity
             style={
-              answer === "both"
+              answer === " polyunsaturated fats"
                 ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
                 : null
             }
-            onPress={() => setAnswer("both")}
+            onPress={() => setAnswer(" polyunsaturated fats")}
           >
-            <Topic colour="#fff" text="both" />
+            <Topic colour="#fff" text=" polyunsaturated fats" />
           </TouchableOpacity>
         </View>
       </View>
@@ -98,7 +99,7 @@ const Question2 = (): JSX.Element => {
             Correct answer
           </Text>
           <Text style={styles.answerText}>
-            type 1 increases the risk of type 2 diabetes
+             saturated fats increases the risk of  monounsaturated fats diabetes
           </Text>
           <Text style={styles.answerText}>
             people who smoke cigarettes are 30%-40% more likely to develop type
@@ -123,16 +124,15 @@ const Question2 = (): JSX.Element => {
             Great job!
           </Text>
           <Text style={styles.answerText}>
-            type 1 does, in fact, increase the risk of type 2 diabetes
+          There are two types of fat that should be eaten sparingly: saturated and trans fatty acids. 
           </Text>
           <Text style={styles.answerText}>
-            According to the CDC, people who smoke cigarettes are 30%-40% more
-            likely to develop type 2 diabetes than people who don't smoke
+          Both can raise cholesterol levels, clog arteries, and increase the risk for heart disease.          
           </Text>
           <Text style={styles.answerText}>
             Read more{" "}
             <a
-              href="https://www.cdc.gov/tobacco/campaign/tips/diseases/diabetes.html"
+              href="https://www.webmd.com/diet/obesity/features/skinny-fat-good-fats-bad-fats#:~:text=The%20'Bad'%20Fats%20in%20Your%20Diet&text=There%20are%20two%20types%20of,the%20risk%20for%20heart%20disease."
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -141,7 +141,7 @@ const Question2 = (): JSX.Element => {
           </Text>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={setGameMode}>
           <View style={styles.correctBtn}>
             <Text style={styles.correctText}>Continue</Text>
           </View>
@@ -150,10 +150,15 @@ const Question2 = (): JSX.Element => {
     );
   };
 
+  const setGameMode = ():void => {
+      setTimeout(() => {
+      window.location.replace("/play/done");
+    }, 500);
+  }
   const renderResponse = (): JSX.Element => {
     let isCorrect: boolean;
 
-    if (answer !== "type 1") isCorrect = false;
+    if (answer !== " saturated fats") isCorrect = false;
     else isCorrect = true;
 
     if (isCorrect) return renderCorrect();
@@ -168,7 +173,7 @@ const Question2 = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <View style={styles.hero}>
-        <CompletionIndicator colour="#27ae60" sheen="#2ecc71" progress={80} />
+        <CompletionIndicator colour="#27ae60" sheen="#2ecc71" progress={100} />
         {renderQuestion1()}
         {renderContainer()}
       </View>
