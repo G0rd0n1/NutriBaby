@@ -34,11 +34,11 @@ const Topics = (): JSX.Element => {
     return (
       <View style={styles.topicsContainer}>
         <TouchableOpacity onPress={() => setGameMode("diabetes")}>
-          <Topic colour="#2ecc71" text="Diabetes II" />
+          <Topic colour="#32ff7e" borderColour="#05c46b" text="Diabetes II" />
         </TouchableOpacity>
-        <Topic colour="#FFC312" text="Asberger's" />
-        <Topic colour="#FDA7DF" text="Hypertension" />
-        <Topic colour="#74b9ff" text="Stress" />
+        <Topic colour="#74b9ff" borderColour="#3c40c6" text="Anaemia" />
+        <Topic colour="#fffa65" borderColour="#ffd32a" text="Kwashiorkor" />
+        <Topic colour="#FDA7DF" borderColour="#ef5777" text="Hypertension" />
       </View>
     );
   };
