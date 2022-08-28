@@ -14,7 +14,7 @@ const Play = (): JSX.Element => {
     if (cookies.MODE === null || cookies.MODE === undefined) {
       window.location.replace("/");
     }
-  }, []);
+  }, [cookies.MODE]);
 
   const renderQuestion1 = (): JSX.Element => {
     return (
@@ -61,53 +61,7 @@ const Play = (): JSX.Element => {
       </View>
     );
   };
-
-  const renderQuestion2 = (): JSX.Element => {
-    return (
-      <View>
-        <Text
-          allowFontScaling={false}
-          selectable={false}
-          style={styles.description}
-        >
-          What are the differences between type 1 and type 2 diabetes?
-        </Text>
-        <View style={styles.topicsContainer}>
-          <TouchableOpacity
-            onPress={() => setAnswer("crying")}
-            style={
-              answer === "crying"
-                ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
-                : null
-            }
-          >
-            <Topic colour="#fff" text="Crying" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={
-              answer === "smoking"
-                ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
-                : null
-            }
-            onPress={() => setAnswer("smoking")}
-          >
-            <Topic colour="#fff" text="Smoking" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={
-              answer === "dancing"
-                ? { borderColor: "#aaa", borderRadius: 20, borderWidth: 5 }
-                : null
-            }
-            onPress={() => setAnswer("dancing")}
-          >
-            <Topic colour="#fff" text="Dancing" />
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  };
-
+  
   const handleAnswerQ1 = (): void => {
     setShowResult(true);
   };
