@@ -1,5 +1,5 @@
 page: 
-	python scripts/manage.py startpage
+	python3 scripts/manage.py startpage
  
 component: 
 	python scripts/manage.py create_component
