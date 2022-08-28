@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nutrition Game</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="/images/TechTurtles_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet" />
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" 
+        integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" 
+        crossorigin="anonymous">
+    </script>
+
+
+</head>
+
+<body>
+    <h1>Nutrition Matching Game</h1>
+    <p>Drag the Nutrition phrase with its matching statement</p>
+    <main class="container">
+        <div>
+            <ul class="draggable-list">
+                <li id="e1" draggable="true">Benefits of healthy eating.</li>
+                <li id="e2" draggable="true">Healthy fats.</li>
+                <li id="e3" draggable="true">Too much sugar.</li>
+                <li id="e4" draggable="true">Malnutrion.</li>
+                <li id="e5" draggable="true">Healthy snacks are made up of.</li>
+            </ul>
+        </div>
+
+        <div>
+            <ul class="draggable-list">
+                <li id="s2" draggable="true">Help us get and stay full.</li>
+                <li id="s1" draggable="true">Improve your mind.</li>
+                <li id="s5" draggable="true">Fruits, vegetables, and healthy beverages.</li>
+                <li id="s3" draggable="true">Not good for you.</li>
+                <li id="s4" draggable="true">Not eating healthy.</li>
+            </ul>
+        </div>
+    </main>
+
+    <div id="endMessage">
+        <h3>Well done!</h3>
+
+        <table>
+            <tr>
+                <th>Nutrition</th>
+                <th>Answer</th>
+            </tr>
+            <tr>
+                <td>Benefits of healthy eating.</td>
+                <td>Improve your mind.</td>
+            </tr>
+            <tr>
+                <td>Healthy fats.</td>
+                <td>Help us get and stay full.</td>
+            </tr>
+            <tr>
+                <td>Too much sugar.</td>
+                <td>Not good for you.</td>
+            </tr>
+            <tr>
+                <td>Malinutrion.</td>
+                <td>Not eating healthy.</td>
+            </tr>
+            <tr>
+                <td>Healthy snacks are made up of.</td>
+                <td>Fruits, vegetables, and healthy beverages.</td>
+            </tr>
+        </table>
+
+        <button onclick="playAgain()">Play Again</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
